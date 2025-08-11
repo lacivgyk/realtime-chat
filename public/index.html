@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bejelentkezés — LaciChat</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <main class="centered">
+    <div class="card">
+      <h1>Bejelentkezés</h1>
+      <form id="loginForm">
+        <label>
+          Felhasználónév
+          <input type="text" name="username" id="username" required />
+        </label>
+        <label>
+          Jelszó
+          <input type="password" name="password" id="password" required />
+        </label>
+        <button type="submit">Belépés</button>
+      </form>
+      <p id="error" class="error" aria-live="polite"></p>
+      <p class="hint">Próbáld: <code>user1 / pass1</code> vagy <code>user2 / pass2</code></p>
+    </div>
+  </main>
+  <script src="/js/login.js"></script>
+</body>
+</html>
