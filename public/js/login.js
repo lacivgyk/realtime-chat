@@ -1,25 +1,21 @@
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
+const socket = io();
+
+const loginForm = document.getElementById('login-form');
+const loginError = document.getElementById('login-error');
+
+loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const username = document.getElementById('username').value.trim();
-  const password = document.getElementById('password').value.trim();
-  const errEl = document.getElementById('error');
-  errEl.textContent = '';
+  const username = loginForm.username.value.trim();
+  const password = loginForm.password.value.trim();
 
-  try {
-    const res = await fetch('/login', {
-      method: 'POST',
-      headers: { 'Content-Type':'application/json' },
-      body: JSON.stringify({ username, password })
-    });
+  socket.emit('login', { username, password });
+});
 
-    const data = await res.json();
-    if (res.ok && data.ok) {
-      // sikeres belépés: átirányítás chatre
-      window.location = '/chat';
-    } else {
-      errEl.textContent = data.msg || 'Hiba a bejelentkezéskor';
-    }
-  } catch (err) {
-    errEl.textContent = 'Hálózati hiba';
-  }
+socket.on('login-success', (username) => {
+  // Sikeres login után átirányítás a chat oldalra, pl. query parammal átadva a felhasználónevet (opcionális)
+  window.location.href = 'chat.html?username=' + encodeURIComponent(username);
+});
+
+socket.on('login-error', (msg) => {
+  loginError.textContent = msg;
 });
