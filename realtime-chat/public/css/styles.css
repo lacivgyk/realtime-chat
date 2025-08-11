@@ -1,0 +1,102 @@
+:root{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --accent:#2b6cb0;
+  --muted:#666;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  background:var(--bg);
+  color:#222;
+  min-height:100vh;
+}
+
+/* Centered login */
+.centered{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  padding:1rem;
+}
+.card{
+  width:100%;
+  max-width:420px;
+  background:var(--card);
+  padding:1.25rem;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(15,23,42,0.08);
+}
+.card h1{margin:0 0 1rem}
+.card label{display:block;margin-bottom:.75rem;font-size:0.95rem}
+.card input{
+  width:100%;
+  padding:.5rem;
+  margin-top:.25rem;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+.card button{
+  display:block;
+  width:100%;
+  padding:.6rem;
+  margin-top:.5rem;
+  background:var(--accent);
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+.error{color:#b00020;margin-top:.5rem}
+.hint{margin-top:.6rem;color:var(--muted);font-size:.9rem}
+
+/* Topbar */
+.topbar{
+  background:white;
+  border-bottom:1px solid #eee;
+  padding:.5rem 0;
+}
+.topbar .container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  max-width:1000px;
+  margin:0 auto;
+  padding:0 1rem;
+}
+.topbar h2{margin:0;font-size:1.1rem}
+.topbar button{padding:.4rem .6rem;border-radius:8px;border:1px solid #ddd;background:#fff;cursor:pointer}
+
+/* Main chat layout */
+.container{
+  max-width:1000px;
+  margin:0 auto;
+  padding:1rem;
+}
+.chat-main{
+  display:grid;
+  grid-template-columns:240px 1fr;
+  gap:1rem;
+}
+.users{background:white;padding:1rem;border-radius:12px;min-height:300px}
+.chat{display:flex;flex-direction:column;height:70vh;background:white;padding:1rem;border-radius:12px}
+.messages{list-style:none;padding:0;margin:0;overflow:auto;flex:1 1 auto}
+.messages li{margin-bottom:.6rem;padding:.5rem;border-radius:8px;max-width:75%;}
+.messages .mine{background:#e6f0ff;align-self:flex-end}
+.messages .other{background:#f3f4f6;align-self:flex-start}
+.messages .meta{font-size:.75rem;color:var(--muted);margin-bottom:.25rem}
+.message-form{display:flex;gap:.5rem;padding-top:.5rem}
+.message-form input{flex:1;padding:.6rem;border-radius:8px;border:1px solid #ddd}
+.message-form button{padding:.6rem 1rem;border-radius:8px;border:none;background:var(--accent);color:#fff;cursor:pointer}
+
+/* Responsive */
+@media (max-width:800px){
+  .chat-main{grid-template-columns:1fr; padding-bottom:3rem}
+  .users{order:2}
+  .chat{order:1;height:60vh}
+  .card{max-width:100%}
+}

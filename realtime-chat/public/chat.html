@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Realtime Chat</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <h2>Realtime Chat</h2>
+      <div>
+        <button id="logoutBtn">Kijelentkezés</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container chat-main">
+    <aside class="users">
+      <h3>Szoba: main-room</h3>
+      <p id="you">Felhasználó: <span id="yourName">—</span></p>
+    </aside>
+
+    <section class="chat">
+      <ul id="messages" class="messages"></ul>
+      <form id="msgForm" class="message-form">
+        <input id="msgInput" autocomplete="off" placeholder="Írj egy üzenetet..." required />
+        <button type="submit">Küld</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/chat.js"></script>
+</body>
+</html>
